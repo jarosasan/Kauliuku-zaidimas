@@ -3,10 +3,10 @@ header("Content-type:application/json");
 session_start();
 
 try {
-    $conn = new PDO("mysql:host=localhost;dbname=kauliukai;charset=utf8", "root", "");
+    $conn = new PDO("mysql:host=localhost;dbname=kauliukai;charset=utf8", "jarosasan", "jarosasan29");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    if(isset($_POST['result'])){
+    if(isset($_POST['win'])){
         $statement = $conn->prepare("INSERT INTO games (name,result, ip) VALUE (:name, :win, :ip)");
         $statement->bindParam(":name", $_SESSION['username']);
         $statement->bindParam(":win", $_POST['win']);

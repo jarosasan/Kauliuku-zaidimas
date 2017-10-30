@@ -3,7 +3,7 @@ $errors = [];
 
 if(isset($_POST['username']) && $_POST['username'] != "" && $_POST['pass'] != "" && $_POST['pass'] == $_POST['conf_pass']) {
     try {
-        $conn = new PDO("mysql:host=localhost;dbname=kauliukai;charset=utf8", "root", "");
+        $conn = new PDO("mysql:host=localhost;dbname=kauliukai;charset=utf8", "jarosasan", "jarosasan29");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $statement = $conn->prepare("SELECT username FROM users");
         $statement->execute();
