@@ -1,8 +1,7 @@
 <?php
-session_start();
 $errors = [];
 
-if(isset($_POST['username']) && $_POST['pass'] == $_POST['conf_pass']) {
+if(isset($_POST['username']) && $_POST['username'] != "" && $_POST['pass'] != "" && $_POST['pass'] == $_POST['conf_pass']) {
     try {
         $conn = new PDO("mysql:host=localhost;dbname=kauliukai;charset=utf8", "root", "");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -14,9 +13,10 @@ if(isset($_POST['username']) && $_POST['pass'] == $_POST['conf_pass']) {
         if($users_data == $_POST['username']){
             $errors[] = "User exsist!";
         }else {
-            $statement = $conn->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+            $statement = $conn->prepare("INSERT INTO users (username, password, lastId) VALUES (:username, :password, :id )");
             $statement->bindParam(':username', $_POST['username']);
             $statement->bindParam(':password', $_POST['pass']);
+            $statement->bindParam(':id', $_SERVER['REMOTE_ADDR']);
             $statement->execute();
 
             header("Location: index.php");
@@ -55,16 +55,16 @@ function showErrors($errors){
             <form method="POST">
                 <h2>Register</h2
                 <div id="alert"></div>
-                <div class="input-group">
+                <div class="input-group regInput">
                     <input id="username" class="form-control form-control-sm" type="text"  name="username" placeholder="Username">
                 </div>
-                <div class="input-group">
+                <div class="input-group regInput">
                     <input id="pass"  class="form-control form-control-sm" type="password" name="pass" placeholder="Password">
                 </div>
-                <div class="input-group">
+                <div class="input-group regInput">
                     <input id="conf_pass"  class="form-control form-control-sm" type="password" name="conf_pass" placeholder="Confirm password">
                 </div>
-                <div class="input-group">
+                <div class="input-group regInput">
                     <input id="add" class="btn btn-warning btn-sm" type="submit" value="Add">
                 </div>
             </form>

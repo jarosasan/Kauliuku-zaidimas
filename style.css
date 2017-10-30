@@ -1,36 +1,81 @@
 nav{
-    margin-bottom:100px;
+
     height: 100px;
     text-decoration-color: green;
 }
 .row{
     text-align: center;
-   margin: 30px auto;
+    margin: 0px auto;
+    align-items: center;
+    display: block;
 }
 
 
 .dice{
+    display: inline-block;
     background-color: #485563;
     width: 200px;
     height: 200px;
     border: 3px solid #ddd;
     border-radius: 10px;
-    margin: 100px auto;
+    margin: 20px;
 }
 .button{
     text: center;
     padding: 30px auto;
 
 }
-p {
+#dices p {
     font-family: sans-serif;
     font-size: 100px;
     color: #ddd;
     text-align: center;
 
 }
-nav .brand{
+nav #brand{
     font-size: 50px;
-    font-style: italic;
-    color: green;
+    text-decoration: #28a745;
+    color: #28a745;
+}
+.hidden{
+    display: none;
+}
+#your_win {
+    display: inline-block;
+    background-color: #28a745;
+    width: 400px;
+    height: 50px;
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    margin: 20px auto;
+    padding-top:20px auto;
+    font-size: 20px;
+    text-decoration-color: #dddddd;
+}
+#your_win p{
+    margin: auto;
+    padding:7px;
+}
+#all{
+    background-color: rgba(10, 83, 28, 0.6);
+    padding:100px;
+    margin:50px auto;
+}
+body{
+    width:100%;
+    height: 100vh;
+    background-size: 100% 100%;
+    background-image: url("https://regmedia.co.uk/2016/11/09/dice_photo_via_shutterstock.jpg?x=1200&y=794");
+}
+
+.regInput{
+    margin: 20px auto;
+    width: 200px;
+}
+#top {
+    float: right;
+}
+
+#top button{
+    margin:10px;
 }
